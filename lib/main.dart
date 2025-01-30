@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
                   labelText: 'Phone Number',
-                  hintText: 'Enter phone number (254XXXXXXXXX)',
+                  hintText: 'Enter phone no (254XXX',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.phone),
                 ),
