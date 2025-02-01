@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
         callBackURL: Uri.parse("https://sandbox.safaricom.co.ke/"),
         accountReference: "Mpesa Joel",
         phoneNumber: userPhone,
-        baseUri: Uri.parse("https://sandbox.safaricom.co.ke/"),
+        baseUri: Uri.parse("https://sandbox.safaricom.co.ke/oauth/v1/generate"),
         passKey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
       );
       print("Transaction Result: " + transactionInitialization.toString());
