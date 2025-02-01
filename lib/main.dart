@@ -241,11 +241,12 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Icon(
-                Icons.payment_rounded,
-                size: 100,
-                color: Colors.green,
-              ),
+              Image.asset(
+  'assets/pesa.jpg',
+  height: 150, // Adjust size as needed
+  width: 150,  // Adjust size as needed
+ 
+),
               const SizedBox(height: 30.0),
               TextFormField(
                 controller: _phoneController,
