@@ -1,131 +1,16 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
-// import 'package:mpesa_flutter_plugin/initializer.dart';
-// import 'package:mpesa_flutter_plugin/payment_enums.dart';
-
-// void main() {
-//   MpesaFlutterPlugin.setConsumerKey("719afMTHt3iQVPsTA4vQZqddCnM13kQoEX4wG1kh8WUjXfxD");
-//   MpesaFlutterPlugin.setConsumerSecret("YK16wZidhGRioDO06vvEAPEbixzOkYwjeVFc9tt18MbT0THOWkIVBwHKYeF31cuP");
-
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-      
-//        primarySwatch: Colors.green,
-//       ),
-//       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-
-
-//   final String title;
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   var number = TextEditingController();
-
-// //method to initiate the transaction 
-//   Future<void> startCheckout({required String userPhone, required String amount}) async {
-//     dynamic transactionInitialization;
-
-//     try{
-//       transactionInitialization =
-//       await MpesaFlutterPlugin.initializeMpesaSTKPush(
-//         businessShortCode: "174379",
-//          transactionType:  TransactionType.CustomerPayBillOnline, 
-//          amount: double.parse(amount), 
-//          partyA: userPhone, 
-//          partyB: "174379", 
-//          callBackURL: Uri.parse("https://sandbox.safaricom.co.ke/"),
-//          accountReference: "Mpesa Joel", 
-//          phoneNumber: userPhone,
-//           baseUri: Uri.parse("https://sandbox.safaricom.co.ke/"),
-//           passKey: 
-//           "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
-//           );
-//           print("Transaction Result: " + transactionInitialization.toString());
-//           return transactionInitialization;
-//     } catch (e) {
-//       print("Exception: " + e.toString());
-//     }
-//   }
-
-//   void _showToast(BuildContext context) {
-//   ScaffoldMessenger.of(context).showSnackBar(
-//     SnackBar(
-//       content: const Text('Sending Request'),
-//       duration: Duration(seconds: 2),
-//     ),
-//   );
-// }
-
-//   @override
-//   Widget build(BuildContext context) {
-   
-//    return Scaffold(
-//       appBar: AppBar(
-//       title: Center(
-//         child: Text(
-//           'MPESA Pay',
-//           style: TextStyle(color: Colors.white),
-//         ),
-//       ),
-//       ),
-
-//       body: Builder(
-//         //body now wrapped in a builder
-//         builder: (context) => Center(
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget> [
-//               SvgPicture.asset('assets/mpesa.svg', width: 150, height: 150),
-//               SizedBox(
-//                 height: 15.0,
-//               ),
-//               FloatingActionButton.extended(
-//                 backgroundColor: Colors.blueAccent,
-//                 icon: Icon(Icons.account_balance_wallet),
-//                 label: Text('pay', style: TextStyle(color: Colors.white),),
-//                 onPressed: (){
-//                   _showToast(context);
-//                   startCheckout(
-//                     userPhone: "254743864282", amount: '2'
-//                   );               
-//                   }
-//               )
-//             ],
-//           ),
-//         ))// This trailing comma makes auto-formatting nicer for build methods.
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:mpesa_flutter_plugin/initializer.dart';
 import 'package:mpesa_flutter_plugin/payment_enums.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize M-PESA plugin with sandbox credentials
-  MpesaFlutterPlugin.setConsumerKey("719afMTHt3iQVPsTA4vQZqddCnM13kQoEX4wG1kh8WUjXfxD");
-  MpesaFlutterPlugin.setConsumerSecret("YK16wZidhGRioDO06vvEAPEbixzOkYwjeVFc9tt18MbT0THOWkIVBwHKYeF31cuP");
-  
+  MpesaFlutterPlugin.setConsumerKey(
+      "719afMTHt3iQVPsTA4vQZqddCnM13kQoEX4wG1kh8WUjXfxD");
+  MpesaFlutterPlugin.setConsumerSecret(
+      "YK16wZidhGRioDO06vvEAPEbixzOkYwjeVFc9tt18MbT0THOWkIVBwHKYeF31cuP");
+
   runApp(const MyApp());
 }
 
@@ -172,28 +57,31 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  Future<void> startCheckout({required String userPhone, required String amount}) async {
+  Future<void> startCheckout(
+      {required String userPhone, required String amount}) async {
     setState(() {
       _isProcessing = true;
     });
 
     try {
       final transactionInitialization = await MpesaFlutterPlugin.initializeMpesaSTKPush(
-        businessShortCode: "174379",
-        transactionType: TransactionType.CustomerPayBillOnline,
-        amount: double.parse(amount),
-        partyA: userPhone,
-        partyB: "174379",
-        callBackURL: Uri.parse("https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"),
-        accountReference: "Test Payment",
-        phoneNumber: userPhone,
-        baseUri: Uri.parse("https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"),
-        transactionDesc: "Test Payment",
-        passKey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
-      );
+          businessShortCode: "174379",
+          transactionType: TransactionType.CustomerPayBillOnline,
+          amount: double.parse(amount),
+          partyA: userPhone,
+          partyB: "174379",
+          callBackURL: Uri.parse(
+              "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"),
+          accountReference: "Test Payment",
+          phoneNumber: userPhone,
+          baseUri: Uri.parse(
+              "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"),
+          transactionDesc: "Test Payment",
+          passKey:
+              "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919");
 
       print("Transaction Result: $transactionInitialization");
-      
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -205,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     } catch (e) {
       print("Exception: $e");
-      
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -242,11 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-  'assets/pesa.jpg',
-  height: 150, // Adjust size as needed
-  width: 150,  // Adjust size as needed
- 
-),
+                'assets/pesa.jpg',
+                height: 150, // Adjust size as needed
+                width: 150, // Adjust size as needed
+              ),
               const SizedBox(height: 30.0),
               TextFormField(
                 controller: _phoneController,
@@ -295,12 +182,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  icon: _isProcessing 
+                  icon: _isProcessing
                       ? const SizedBox(
                           width: 20,
                           height: 20,
