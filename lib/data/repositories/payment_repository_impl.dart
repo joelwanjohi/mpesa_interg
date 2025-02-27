@@ -13,10 +13,10 @@ class PaymentRepositoryImpl implements PaymentRepository {
     try {
       // Convert domain entity to data model
       final paymentModel = PaymentModel.fromEntity(payment);
-      
+
       // Call data source
       final result = await dataSource.initiateSTKPush(paymentModel);
-      
+
       if (result['success']) {
         return PaymentResult.success(
           'Please check your phone for the STK push prompt',

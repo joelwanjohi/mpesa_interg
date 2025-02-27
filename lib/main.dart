@@ -224,8 +224,6 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -235,11 +233,11 @@ import 'presentation/providers/payment_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Enable performance profiling if needed
   debugProfileBuildsEnabled = true;
   debugProfilePaintsEnabled = true;
-  
+
   // Initialize dependency injection
   di.init();
 

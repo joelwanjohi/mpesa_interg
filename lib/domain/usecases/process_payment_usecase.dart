@@ -17,12 +17,14 @@ class ProcessPaymentUseCase {
     }
 
     if (!phoneNumber.startsWith('254') || phoneNumber.length != 12) {
-      return PaymentResult.failure("Please enter a valid phone number starting with 254");
+      return PaymentResult.failure(
+          "Please enter a valid phone number starting with 254");
     }
 
     double? amount = double.tryParse(amountString);
     if (amount == null || amount <= 0) {
-      return PaymentResult.failure("Please enter a valid amount greater than 0");
+      return PaymentResult.failure(
+          "Please enter a valid amount greater than 0");
     }
 
     // Create payment entity and process it through the repository

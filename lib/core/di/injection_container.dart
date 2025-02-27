@@ -27,7 +27,7 @@ void init() {
     () => MpesaDataSourceImpl(),
   );
 
-  // Initialize M-PESA
+  // Initialize m-pesa
   final mpesaDataSource = sl<MpesaDataSource>() as MpesaDataSourceImpl;
   mpesaDataSource.initialize();
 }
