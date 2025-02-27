@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mpesa_flutter_plugin/initializer.dart';
 import 'package:mpesa_flutter_plugin/payment_enums.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+debugProfileBuildsEnabled = true;
+debugProfilePaintsEnabled = true;
   // Initialize M-PESA plugin with sandbox credentials
   MpesaFlutterPlugin.setConsumerKey(
       "719afMTHt3iQVPsTA4vQZqddCnM13kQoEX4wG1kh8WUjXfxD");
