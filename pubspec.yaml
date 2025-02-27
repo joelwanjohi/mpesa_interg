@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   mpesa_flutter_plugin: ^1.6.1
   flutter_svg: ^2.0.17
+  provider: ^6.1.2
+  get_it: ^8.0.3
   
   
 

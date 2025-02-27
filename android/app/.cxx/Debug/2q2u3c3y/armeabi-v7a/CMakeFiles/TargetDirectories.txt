@@ -1,0 +1,2 @@
+/home/joeli/Music/mpesa/android/app/.cxx/Debug/2q2u3c3y/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/joeli/Music/mpesa/android/app/.cxx/Debug/2q2u3c3y/armeabi-v7a/CMakeFiles/rebuild_cache.dir
