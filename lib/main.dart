@@ -1,3 +1,6 @@
+//THIS IS THE COMPLETE MPESA INTERGRATION WITHOUT THE CLEAN ARCH
+
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 // import 'package:mpesa_flutter_plugin/initializer.dart';
